@@ -1,0 +1,17 @@
+body{
+    background: linear-gradient(90deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+p{
+    color: rgb(129, 19, 239);
+    font-size: 20px;
+}
+
+h1, h2, h3{
+    color: #f0a7dcd7;
+    text-shadow: 0 0 10px rgb(240, 120, 240);
+    text-align: center;
+}
+p {
+        color: #f0a7dcd7;
+
+    }
