@@ -1,4 +1,4 @@
-/* Body y letras*/
+/* BODY Y LETRAS*/
 * {
     margin: 0;
     padding: 0;
@@ -12,17 +12,26 @@ body {
     min-height: 100vh;
 }
 
-/*NAVBAR*/
+html {
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
-    background-color: #0d0d0d;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+    position: fixed;   
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* 3. LOGO */
 .logo-img {
     width: 40px;
     height: 40px;
@@ -30,11 +39,8 @@ body {
     transition: transform 0.3s ease;
 }
 
-.logo-img:hover {
-    transform: scale(1.1);
-}
+.logo-img:hover { transform: scale(1.1); }
 
-/*Links*/
 .nav-links {
     list-style: none;
     display: flex;
@@ -44,22 +50,23 @@ body {
 .nav-links a {
     text-decoration: none;
     color: #999; 
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500; 
     transition: all 0.3s ease;
-    text-transform: capitalize; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
 }
 
 .nav-links a:hover {
     color: #fff;
     text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.5),
-        0 0 15px #00b7ff, 
-        0 0 25px #00b7ff;    
+        0 0 10px #00b7ff, 
+        0 0 25px #00b7ff,
+        0 0 45px rgba(0, 183, 255, 0.5); 
     transform: translateY(-2px);
 }
 
-/*ICONOS SOCIALES*/
+/* ICONOS SOCIALES */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -69,31 +76,86 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
 }
 
 .social-icons img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
     filter: invert(1); 
     opacity: 0.8;
     transition: 0.3s;
 }
 
-/*HOVER SOCIALES*/
 .social-icons a:hover {
     background: #00b7ff;
-    box-shadow: 0 0 10px #00b7ff, 
-                0 0 40px #00b7ff, 
-                0 0 80px #00b7ff;
+    box-shadow: 
+        0 0 15px #00b7ff,   
+        0 0 40px #00b7ff,  
+        0 0 70px #00b7ff;
     transform: scale(1.1);
 }
 
-.social-icons a:hover img {
-    opacity: 1;
-    filter: invert(0); 
+.social-icons a:hover img { filter: invert(0); opacity: 1; }
+
+/* SECCIONES (ESTILO DOS COLUMNAS COMO LA IMAGEN) */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 100px 10% 50px 10%; }
+
+/* Contenedor del texto (Lado Izquierdo) */
+.contenido {
+    flex: 1;
+    max-width: 600px;
+    text-align: left; 
+    color: #fff;
+    z-index: 2;
+}
+
+/* Contenedor de Imagen/Informe */
+.area-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.area-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    /* Un pequeño brillo neón a la foto también */
+    box-shadow: 0 0 30px rgba(0, 183, 255, 0.2); 
+}
+
+/* TIPOGRAFÍA EN SECCIONES */
+h1 {
+    font-size: 55px; 
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #00b7ff);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 40px;
+    color: #00b7ff; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6; 
+    color: #ccc; 
+    margin-bottom: 30px;
 }
