@@ -163,6 +163,9 @@ html {
     color: #fff;
     z-index: 2;
 }
+.foto-area{
+    width: auto;
+}
 
 /* Contenedor de Imagen/Informe */
 .area-visual {
