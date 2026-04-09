@@ -209,9 +209,7 @@ p {
 /* carussel */
 .proyectos-slider {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; 
-    scrollbar-width: none; 
+    overflow-x: hidden;
     width: 400px; 
     border-radius: 20px;
     gap: 0; 
@@ -223,7 +221,7 @@ p {
 
 /* CADA TARJETA */
 .proyecto-card {
-    min-width: 100%; 
+    min-width: 400px; 
     scroll-snap-align: center;
     position: relative;
     height: 400px;
@@ -232,12 +230,20 @@ p {
     border: 1px solid rgba(0, 183, 255, 0.2);
     transition: all 0.4s ease; 
 }
+.group {
+    display: flex;
+    width: max-content;
+    animation: spin 12s linear infinite;
+}
 
 /* EFECTO HOVER EN LA TARJETA */
 .proyecto-card:hover {
     border-color: #00b7ff;
     box-shadow: 0 0 20px rgba(0, 183, 255, 0.4);
     transform: translateY(-5px);
+}
+.proyectos-slider:hover .group {
+    animation-play-state: paused;
 }
 
 .proyecto-card img {
@@ -274,41 +280,25 @@ p {
     text-align: center;
 }
 
+@keyframes spin {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}   
+
 .area-visual {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 400px; 
 }
-
-/* Contenedor de las barritas */
-.slider-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-/* Estilo de las barritas */
-.slider-nav a {
-    width: 35px;
-    height: 6px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse por las barritas */
-.slider-nav a:hover {
-    background-color: #00b7ff;
-    box-shadow: 0 0 10px #00b7ff;
-    width: 45px;
-    }
-
 .minimal-footer {
     padding: 10px 20px;
     text-align: center;
-    background: rgba(10, 10, 10, 0.5); /* Sutil para que se vea el fondo */
+    background: rgba(10, 10, 10, 0.5); 
 }
 
 .footer-legal {
