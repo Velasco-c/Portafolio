@@ -179,3 +179,26 @@ html {
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 183, 255, 0.2); 
 }
+
+h1 {
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #00b7ff;
+    text-shadow: 0 0 10px rgba(0, 183, 255, 0.5);
+}
+
+h2 {
+    font-size: 40px;
+    color: #00b7ff; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6; 
+    color: #ccc; 
+    margin-bottom: 30px;
+}
