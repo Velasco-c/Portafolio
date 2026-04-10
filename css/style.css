@@ -179,8 +179,6 @@ html {
 .area-visual img {
     max-width: 100%;
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 183, 255, 0.2); 
 }
 
 h1 {
@@ -291,9 +289,22 @@ p {
 
 .area-visual {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    max-width: 400px; 
+}
+
+.gif-integrado {
+    height: 450px;
+    width: auto;
+    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    filter: saturate(0.8) contrast(1.1) drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
+    animation: flotar 4s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 .minimal-footer {
     padding: 10px 20px;
@@ -306,4 +317,33 @@ p {
     color: #555;
     letter-spacing: 2px;
     margin-top: 20px;
+}
+
+.glass-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    width: 120px; 
+}
+
+.card img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.card span {
+    color: white;
+    font-size: 0.9rem;
 }
