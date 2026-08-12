@@ -1,211 +1,643 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Portafolio</title>
+    <meta name="description" content="Portafolio personal de Carlos Elias Tzoy Velasco, desarrollador de software en formación.">
+    <meta name="author" content="Carlos Elias Tzoy Velasco">
+    <meta name="robots" content="index, follow">
+    <title>Carlos Tzoy Velasco | Desarrollador de Software</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-<a href="#inicio" class="btn-up">
-    <img src="iconos/arrow-up.svg" alt="Subir">
-</a>
-<header>
-<nav class="navbar">
-   <div class="logo-main">
-    <a href="index.html">
-        <img src="iconos/home.svg" alt="Logo" class="logo-img">
-        <a href="/" class="nav-link d-flex align-items-center">
-</a>
-    </div>
-    <ul class="nav-links">
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#habilidades">habilidades</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#Tecnologias">Tecnologías</a></li>
-        <li><a href="#contacto">contacto</a></li>
-
-    </ul>
-    <div class="social-icons">
-    <a href="https://github.com/Velasco-c" target="_blank">
-  <img src="iconos/github.svg" alt="GitHub">
-</a>
-
-<a href="https://www.linkedin.com/in/carlos-velasco-0b1b80278?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
-  <img src="iconos/linkedin.svg" alt="LinkedIn" >
-</a>
-
-
-
-<a href="https://www.instagram.com/ve.lasco319?igsh=M3FjdDE2eTVscDdw" target="_blank">
-  <img src="iconos/instagram.svg" alt="Instagram">
-</a>
-
-<a href="https://www.facebook.com/share/1GnUN6dnLk/" target="_blank">
-  <img src="iconos/facebook.svg" alt="Facebook">
-</a>
-</div>
-</nav>
-</header>
-
-<main class="main-content">
-    <section class="section" id="inicio">
-        <div class="contenido">
-            <h1>Carlos Elias <br> Tzoy Velasco</h1>
-        <p>Desarrollador de software en formación con un enfoque apasionado por la resolución de problemas técnicos. Actualmente fortalezco mis competencias técnicas, dominio del inglés y habilidades profesionales en Campuslands. Me distingo por mi perseverancia y una mentalidad de aprendizaje continuo, orientada a transformar cada reto en una oportunidad de mejora.</p>
-        </div>
-        <div class="foto-area">
-            <img src="imagenes/foto.png" alt="Foto-personal" style="height: 400px;">
-        </div>
-    </section>
-</main>
-
-<section id="sobre-mi" class="section">
-    <div class="contenido">
-        <h2>Sobre mí</h2>
-        <p>
-    mi enfoque está en la mejora continua y la resolución de problemas mediante lenguajes como <strong>Python</strong>. Me apasiona el proceso de transformar una idea abstracta en una herramienta funcional y estética. Mi meta es aportar valor a través de soluciones tecnológicas que no solo cumplan su función, sino que sean el resultado de un aprendizaje crítico y profesional.        </p>
-    </div>
-    <div class="area-visual">
-    <img src="imagenes/Sobre_mi.gif" alt="Sobre mí" class="gif-integrado">
-</div>
-</section>
-<section id="habilidades" class="section">
-    <div class="contenido">
-        <h2>Habilidades</h2>
-        <div class="glass-grid">
-            <div class="card"><img src="iconos/html.svg" alt="HTML"><span>HTML</span></div>
-            <div class="card"><img src="iconos/css.svg" alt="CSS"><span>CSS</span></div>
-            <div class="card"><img src="iconos/github.svg" alt="Git"><span>Git</span></div>
-            <div class="card"><img src="iconos/problemas.svg" alt="Resolución"><span>Resolución de problemas</span></div>
-        </div>
-    </div>
-    <div class="area-visual">
-        <img src="imagenes/habilidades.png" style="height: 400px" alt="habilidades">
-    </div>
-</section>
-
-
-<section id="proyectos" class="section">
-    <div class="contenido">
-        <h2>Proyectos</h2>
-        <p>Aquí podrás ver algunos de mis proyectos donde aplico mis conocimientos en programación y desarrollo web.</p>
+    <!-- Fondo dinámico -->
+    <div class="background" aria-hidden="true">
+        <div class="background-grid"></div>
+        <div class="background-glow background-glow--primary"></div>
+        <div class="background-glow background-glow--secondary"></div>
+        <div class="background-noise"></div>
     </div>
 
-    <div class="area-visual">
-        <div class="proyectos-slider">
-            <div class="group">
-        
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Retos-publics.git" target="_blank">
-                        <img src="imagenes/proyecto1.png" alt="Proyecto 1">
+    <!-- Navegación -->
+    <header class="site-header">
+        <nav class="navbar" aria-label="Navegación principal">
+            <a href="#inicio" class="navbar-logo" aria-label="Ir al inicio">
+                <span class="navbar-logo-mark">C</span>
+                <span class="navbar-logo-name">Carlos Tzoy</span>
+            </a>
+
+            <button class="navbar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="navbar-menu" id="navigation-menu">
+                <ul class="navbar-links">
+                    <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                    <li><a href="#tecnologias" class="nav-link">Stack</a></li>
+                    <li><a href="#competencias" class="nav-link">Competencias</a></li>
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
+                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="#aprendiendo" class="nav-link">Aprendiendo</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="navbar-socials" aria-label="Redes sociales">
+                    <a href="https://github.com/Velasco-c" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="./iconos/github.svg" alt="">
                     </a>
-                    <div class="proyecto-info">
-                        <h3>Retos publicos</h3>
-                        <p>Tecnologias: Python</p>
-                    </div>
-                </div>
-        
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Proyecto_Inventario.git" target="_blank">
-                        <img src="imagenes/proyecto2.png" alt="Proyecto 2">
+                    <a href="https://www.linkedin.com/in/carlos-velasco-0b1b80278" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="./iconos/linkedin.svg" alt="">
                     </a>
-                    <div class="proyecto-info">
-                        <h3>Proyecto Inventario</h3>
-                        <p>Tecnologias: Python</p>
-                    </div>
                 </div>
-        
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Proyecto_Python_Carlos_Velasco.git" target="_blank">
-                        <img src="imagenes/proyecto3.png" alt="Proyecto 3">
-                    </a>
-                    <div class="proyecto-info">
-                        <h3>Proyecto personal</h3>
-                        <p>Tecnologia: Python</p>
-                    </div>
-                </div>
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Retos-publics.git" target="_blank">
-                        <img src="imagenes/proyecto1.png" alt="Proyecto 1">
-                    </a>
-                    <div class="proyecto-info">
-                        <h3>Retos publicos</h3>
-                        <p>Tecnologias: Python</p>
-                    </div>
-                </div>
-        
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Proyecto_Inventario.git" target="_blank">
-                        <img src="imagenes/proyecto2.png" alt="Proyecto 2">
-                    </a>
-                    <div class="proyecto-info">
-                        <h3>Proyecto Inventario</h3>
-                        <p>Tecnologias: Python</p>
-                    </div>
-                </div>
-        
-                <div class="proyecto-card">
-                    <a href="https://github.com/Velasco-c/Proyecto_Python_Carlos_Velasco.git" target="_blank">
-                        <img src="imagenes/proyecto3.png" alt="Proyecto 3">
-                    </a>
-                    <div class="proyecto-info">
-                        <h3>Proyecto personal</h3>
-                        <p>Tecnologia: Python</p>
-                    </div>
-                </div>
-        
             </div>
-        </div>      
-    </div>
-</section>
+        </nav>
+    </header>
 
-<section id="Tecnologias" class="section">
-    <div class="contenido">
-        <h2>Tecnologias</h2>
-        <p>
-            Aquí podrás ver algunos de Las Tecnologias que utlilizo donde aplico mis conocimientos en programación y desarrollo web.
-        </p>
-    </div>
-    <div class="area-visual">
-        <div class="glass-grid">
-            <div class="card"><img src="iconos/html.svg" alt="HTML"><span>html</span></div>
-            <div class="card"><img src="iconos/css.svg" alt="CSS"><span>CSS</span></div>
-            <div class="card"><img src="iconos/github.svg" alt="Git"><span>Git</span></div>
-            <div class="card"><img src="iconos/python.svg" alt="Resolución"><span>python</span></div>
+    <main>
+
+        <!-- Hero -->
+        <section class="hero section" id="inicio" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <span class="section-eyebrow">Software Developer</span>
+
+                <h1 id="hero-title">Carlos Elias<br><span>Tzoy Velasco</span></h1>
+
+                <p class="hero-description">
+                    Desarrollador de software en formación, enfocado en fortalecer mis conocimientos en desarrollo web, backend, bases de datos y automatización.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#proyectos" class="button button--primary">Ver proyectos <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/Velasco-c" target="_blank" rel="noopener noreferrer" class="button button--secondary">GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <div class="hero-status">
+                    <span class="status-indicator" aria-hidden="true"></span>
+                    <span>Actualmente aprendiendo y construyendo</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+                <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+
+                <!-- IMAGEN: fotografía personal principal -->
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-glow" aria-hidden="true"></div>
+                    <img src="./imagenes/foto.png" class="hero-image" alt="Carlos Elias Tzoy Velasco">
+                </div>
+
+                <div class="tech-float tech-float--html" aria-hidden="true">
+                    <img src="./iconos/html.svg" alt="">
+                    <span>HTML</span>
+                </div>
+
+                <div class="tech-float tech-float--python" aria-hidden="true">
+                    <img src="./iconos/python.svg" alt="">
+                    <span>Python</span>
+                </div>
+
+                <div class="tech-float tech-float--git" aria-hidden="true">
+                    <img src="./iconos/github.svg" alt="">
+                    <span>Git</span>
+                </div>
+            </div>
+
+            <a href="#sobre-mi" class="scroll-indicator" aria-label="Continuar hacia Sobre mí">
+                <span class="scroll-indicator-line"></span>
+                <span>Scroll</span>
+            </a>
+        </section>
+
+        <!-- Sobre mí -->
+        <section class="about section" id="sobre-mi" aria-labelledby="about-title">
+            <div class="section-header">
+                <span class="section-eyebrow">01 / Sobre mí</span>
+                <h2 id="about-title">Construir, aprender<br>y mejorar.</h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-content">
+                    <p class="section-lead">
+                        Mi enfoque está en la mejora continua y la resolución de problemas mediante la programación.
+                    </p>
+
+                    <p>
+                        Me apasiona transformar una idea abstracta en una herramienta funcional y estética. Actualmente continúo fortaleciendo mis competencias técnicas y profesionales, buscando convertir cada reto en una oportunidad de aprendizaje.
+                    </p>
+
+                    <div class="about-tags" aria-label="Perfil profesional">
+                        <span class="tag">Perito en Desarrollo de Software</span>
+                        <span class="tag">Desarrollador Junior</span>
+                        <span class="tag">Aprendizaje continuo</span>
+                    </div>
+                </div>
+
+                <div class="about-visual">
+                    <!-- IMAGEN: recurso visual relacionado con Sobre mí -->
+                    <div class="visual-frame">
+                        <img src="./imagenes/sobre-mi.gif" alt="Recurso visual relacionado con el perfil profesional">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologías -->
+        <section class="technologies section" id="tecnologias" aria-labelledby="technologies-title">
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">02 / Stack tecnológico</span>
+                <h2 id="technologies-title">Tecnologías que<br>estoy construyendo.</h2>
+                <p>
+                    Un stack en evolución. Cada tecnología representa conocimientos que utilizo, practico o estoy explorando actualmente.
+                </p>
+            </div>
+
+            <div class="technology-filters" role="group" aria-label="Filtrar tecnologías">
+                <button class="filter-button is-active" type="button" data-filter="all">Todas</button>
+                <button class="filter-button" type="button" data-filter="frontend">Frontend</button>
+                <button class="filter-button" type="button" data-filter="backend">Backend / Datos</button>
+                <button class="filter-button" type="button" data-filter="tools">Herramientas</button>
+            </div>
+
+            <div class="technology-grid">
+
+                <article class="technology-card" data-category="frontend" data-status="current">
+                    <div class="technology-icon"><img src="./iconos/html.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Frontend</span>
+                        <h3>HTML5</h3>
+                        <p>Estructuración semántica y accesible de interfaces web.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="frontend" data-status="current">
+                    <div class="technology-icon"><img src="./iconos/css.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Frontend</span>
+                        <h3>CSS3</h3>
+                        <p>Diseño responsive, layouts, animaciones y sistemas visuales.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="frontend" data-status="practice">
+                    <div class="technology-icon"><img src="./iconos/javascript.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Frontend</span>
+                        <h3>JavaScript</h3>
+                        <p>Interactividad, manipulación del DOM y lógica para interfaces.</p>
+                        <span class="technology-status">En práctica</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="backend" data-status="current">
+                    <div class="technology-icon"><img src="./iconos/python.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Backend</span>
+                        <h3>Python</h3>
+                        <p>Programación, lógica, automatización y desarrollo de aplicaciones.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="backend" data-status="practice">
+                    <div class="technology-icon"><img src="./iconos/mysql.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Datos</span>
+                        <h3>MySQL</h3>
+                        <p>Diseño de bases de datos relacionales y consultas SQL.</p>
+                        <span class="technology-status">En práctica</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="backend" data-status="practice">
+                    <div class="technology-icon"><img src="./iconos/nodejs.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Backend</span>
+                        <h3>Node.js</h3>
+                        <p>Desarrollo backend y construcción de servicios.</p>
+                        <span class="technology-status">En práctica</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="tools" data-status="current">
+                    <div class="technology-icon"><img src="./iconos/git.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Herramienta</span>
+                        <h3>Git</h3>
+                        <p>Control de versiones y organización del desarrollo.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="tools" data-status="current">
+                    <div class="technology-icon"><img src="./iconos/github.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Herramienta</span>
+                        <h3>GitHub</h3>
+                        <p>Gestión, publicación y colaboración de proyectos.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="tools" data-status="practice">
+                    <div class="technology-icon"><img src="./iconos/docker.svg" alt=""></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Herramienta</span>
+                        <h3>Docker</h3>
+                        <p>Contenedores y entornos de desarrollo reproducibles.</p>
+                        <span class="technology-status">En práctica</span>
+                    </div>
+                </article>
+
+                <article class="technology-card" data-category="tools" data-status="current">
+                    <div class="technology-icon"><span class="technology-icon-text">VS</span></div>
+                    <div class="technology-content">
+                        <span class="technology-category">Herramienta</span>
+                        <h3>VS Code</h3>
+                        <p>Entorno principal para desarrollo y organización del código.</p>
+                        <span class="technology-status">Uso actual</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Competencias -->
+        <section class="skills section" id="competencias" aria-labelledby="skills-title">
+            <div class="section-header">
+                <span class="section-eyebrow">03 / Competencias</span>
+                <h2 id="skills-title">Cómo abordo<br>los problemas.</h2>
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="skill-card skill-card--large">
+                    <span class="skill-number">01</span>
+                    <div>
+                        <h3>Resolución de problemas</h3>
+                        <p>Analizar un problema, dividirlo en partes y construir soluciones de forma estructurada.</p>
+                    </div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">02</span>
+                    <div>
+                        <h3>Pensamiento lógico</h3>
+                        <p>Convertir necesidades en procesos y estructuras que puedan implementarse.</p>
+                    </div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">03</span>
+                    <div>
+                        <h3>Aprendizaje continuo</h3>
+                        <p>Investigar, practicar y reforzar conocimientos mediante proyectos.</p>
+                    </div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">04</span>
+                    <div>
+                        <h3>Organización del código</h3>
+                        <p>Priorizar estructuras claras, mantenibles y comprensibles.</p>
+                    </div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">05</span>
+                    <div>
+                        <h3>Documentación</h3>
+                        <p>Registrar decisiones y procesos para facilitar la comprensión del proyecto.</p>
+                    </div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">06</span>
+                    <div>
+                        <h3>Control de versiones</h3>
+                        <p>Utilizar Git y GitHub para organizar cambios y proyectos.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Proceso -->
+        <section class="process section" id="proceso" aria-labelledby="process-title">
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">04 / Proceso</span>
+                <h2 id="process-title">De la idea<br>a la solución.</h2>
+                <p>
+                    Una forma estructurada de abordar cada proyecto, desde la comprensión del problema hasta la mejora final.
+                </p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-line" aria-hidden="true"><span class="process-line-progress"></span></div>
+
+                <article class="process-step" data-step="01">
+                    <div class="process-marker">01</div>
+                    <div class="process-content">
+                        <span>01</span>
+                        <h3>Analizar</h3>
+                        <p>Comprender el problema, los requisitos y el resultado esperado.</p>
+                    </div>
+                </article>
+
+                <article class="process-step" data-step="02">
+                    <div class="process-marker">02</div>
+                    <div class="process-content">
+                        <span>02</span>
+                        <h3>Planificar</h3>
+                        <p>Definir la estructura, herramientas y estrategia de implementación.</p>
+                    </div>
+                </article>
+
+                <article class="process-step" data-step="03">
+                    <div class="process-marker">03</div>
+                    <div class="process-content">
+                        <span>03</span>
+                        <h3>Desarrollar</h3>
+                        <p>Construir la solución aplicando buenas prácticas y organización.</p>
+                    </div>
+                </article>
+
+                <article class="process-step" data-step="04">
+                    <div class="process-marker">04</div>
+                    <div class="process-content">
+                        <span>04</span>
+                        <h3>Probar</h3>
+                        <p>Detectar errores, validar resultados y comprobar el comportamiento.</p>
+                    </div>
+                </article>
+
+                <article class="process-step" data-step="05">
+                    <div class="process-marker">05</div>
+                    <div class="process-content">
+                        <span>05</span>
+                        <h3>Mejorar</h3>
+                        <p>Refactorizar, documentar y buscar oportunidades de mejora.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Proyectos -->
+        <section class="projects section" id="proyectos" aria-labelledby="projects-title">
+            <div class="section-header">
+                <span class="section-eyebrow">05 / Proyectos</span>
+                <h2 id="projects-title">Cosas que<br>he construido.</h2>
+                <p>
+                    Proyectos donde aplico mis conocimientos y continúo desarrollando experiencia práctica.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card project-card--featured" data-project="inventario">
+                    <div class="project-image">
+                        <!-- IMAGEN: captura real del Proyecto Inventario -->
+                        <img src="./imagenes/proyecto2.png" alt="Captura del Proyecto Inventario">
+                        <div class="project-image-overlay"></div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Proyecto destacado</span>
+                            <span>Python</span>
+                        </div>
+                        <h3>Proyecto Inventario</h3>
+                        <p>Aplicación desarrollada para aplicar conceptos de programación y gestión de información.</p>
+                        <button class="project-expand" type="button" aria-label="Ver información del Proyecto Inventario" data-project-open="inventario">Ver proyecto <span aria-hidden="true">↗</span></button>
+                    </div>
+                </article>
+
+                <article class="project-card project-card--medium" data-project="retos">
+                    <div class="project-image">
+                        <!-- IMAGEN: captura real de Retos Públicos -->
+                        <img src="./imagenes/proyecto1.png" alt="Captura de Retos Públicos">
+                        <div class="project-image-overlay"></div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Python</span>
+                        </div>
+                        <h3>Retos Públicos</h3>
+                        <p>Práctica de lógica y resolución de problemas mediante diferentes retos de programación.</p>
+                        <button class="project-expand" type="button" aria-label="Ver información de Retos Públicos" data-project-open="retos">Ver proyecto <span aria-hidden="true">↗</span></button>
+                    </div>
+                </article>
+
+                <article class="project-card project-card--medium" data-project="personal">
+                    <div class="project-image">
+                        <!-- IMAGEN: captura real del Proyecto Python personal -->
+                        <img src="./imagenes/proyecto3.png" alt="Captura del Proyecto Python personal">
+                        <div class="project-image-overlay"></div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span>Python</span>
+                        </div>
+                        <h3>Proyecto personal</h3>
+                        <p>Proyecto utilizado para aplicar y reforzar conocimientos de programación.</p>
+                        <button class="project-expand" type="button" aria-label="Ver información del Proyecto personal" data-project-open="personal">Ver proyecto <span aria-hidden="true">↗</span></button>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="projects-footer">
+                <a href="https://github.com/Velasco-c" target="_blank" rel="noopener noreferrer" class="button button--secondary">Explorar GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+
+        <!-- Panel de proyecto -->
+        <div class="project-modal" id="project-modal" aria-hidden="true">
+            <div class="project-modal-backdrop" data-project-close></div>
+
+            <aside class="project-panel" role="dialog" aria-modal="true" aria-labelledby="project-panel-title">
+                <button class="project-panel-close" type="button" aria-label="Cerrar proyecto" data-project-close>×</button>
+
+                <div class="project-panel-image">
+                    <!-- IMAGEN: imagen ampliada del proyecto seleccionado -->
+                    <img src="" alt="" id="project-panel-image">
+                </div>
+
+                <div class="project-panel-content">
+                    <span class="section-eyebrow" id="project-panel-category"></span>
+                    <h2 id="project-panel-title"></h2>
+                    <p id="project-panel-description"></p>
+
+                    <div class="project-panel-stack" id="project-panel-stack"></div>
+
+                    <div class="project-panel-actions">
+                        <a href="#" class="button button--primary" id="project-panel-link" target="_blank" rel="noopener noreferrer">Ver código <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </aside>
         </div>
+
+        <!-- Aprendiendo -->
+        <section class="learning section" id="aprendiendo" aria-labelledby="learning-title">
+            <div class="section-header">
+                <span class="section-eyebrow">06 / Actualmente aprendiendo</span>
+                <h2 id="learning-title">Evolución<br>constante.</h2>
+                <p>
+                    Estas son algunas de las áreas que estoy fortaleciendo actualmente mediante estudio y práctica.
+                </p>
+            </div>
+
+            <div class="learning-grid">
+
+                <article class="learning-card">
+                    <div class="learning-card-header">
+                        <span class="learning-icon">01</span>
+                        <span class="learning-status">En práctica</span>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Fortaleciendo lógica, manipulación del DOM, eventos e interactividad para desarrollo web.</p>
+                    <div class="learning-tags">
+                        <span>DOM</span>
+                        <span>Eventos</span>
+                        <span>APIs</span>
+                    </div>
+                </article>
+
+                <article class="learning-card">
+                    <div class="learning-card-header">
+                        <span class="learning-icon">02</span>
+                        <span class="learning-status">En práctica</span>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>Profundizando en diseño relacional, SQL, consultas, procedimientos y lógica de bases de datos.</p>
+                    <div class="learning-tags">
+                        <span>SQL</span>
+                        <span>Relacional</span>
+                        <span>Procedimientos</span>
+                    </div>
+                </article>
+
+                <article class="learning-card">
+                    <div class="learning-card-header">
+                        <span class="learning-icon">03</span>
+                        <span class="learning-status">Explorando</span>
+                    </div>
+                    <h3>Automatización + IA</h3>
+                    <p>Explorando automatización e integración de herramientas para ampliar mis capacidades de desarrollo.</p>
+                    <div class="learning-tags">
+                        <span>n8n</span>
+                        <span>Automatización</span>
+                        <span>IA</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- GitHub -->
+        <section class="github section" id="github" aria-labelledby="github-title">
+            <div class="github-panel">
+                <div class="github-content">
+                    <span class="section-eyebrow">07 / Código público</span>
+                    <h2 id="github-title">Mi trabajo<br>también vive en GitHub.</h2>
+                    <p>
+                        Repositorios y proyectos donde documento parte de mi proceso de aprendizaje y desarrollo.
+                    </p>
+                    <a href="https://github.com/Velasco-c" target="_blank" rel="noopener noreferrer" class="button button--primary">Visitar GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <div class="github-stats" aria-label="Información de GitHub">
+                    <div class="github-stat">
+                        <span class="github-stat-value">Repos</span>
+                        <span class="github-stat-label">Proyectos públicos</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value">Python</span>
+                        <span class="github-stat-label">Tecnología destacada</span>
+                    </div>
+                    <div class="github-stat">
+                        <span class="github-stat-value">Git</span>
+                        <span class="github-stat-label">Control de versiones</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="contact section" id="contacto" aria-labelledby="contact-title">
+            <div class="contact-content">
+                <span class="section-eyebrow">08 / Contacto</span>
+                <h2 id="contact-title">¿Construimos<br>algo?</h2>
+                <p>
+                    Si tienes una idea, proyecto o simplemente quieres ponerte en contacto, puedes escribirme directamente.
+                </p>
+
+                <a href="mailto:carlos.velasco.est@gmail.com" class="contact-email">carlos.velasco.est@gmail.com</a>
+
+                <div class="contact-actions">
+                    <a href="mailto:carlos.velasco.est@gmail.com" class="button button--primary">Enviar correo <span aria-hidden="true">↗</span></a>
+                    <a href="https://www.linkedin.com/in/carlos-velasco-0b1b80278" target="_blank" rel="noopener noreferrer" class="button button--secondary">LinkedIn <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+
+            <div class="contact-visual" aria-hidden="true">
+                <div class="contact-orbit"></div>
+                <div class="contact-core"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <a href="#inicio" class="footer-logo">Carlos Tzoy<span>.</span></a>
+
+            <div class="footer-socials" aria-label="Redes sociales">
+                <a href="https://github.com/Velasco-c" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <img src="./iconos/github.svg" alt="">
+                </a>
+                <a href="https://www.linkedin.com/in/carlos-velasco-0b1b80278" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="./iconos/linkedin.svg" alt="">
+                </a>
+                <a href="mailto:carlos.velasco.est@gmail.com" aria-label="Enviar correo">
+                    <img src="./iconos/email.svg" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Carlos Elias Tzoy Velasco. Todos los derechos reservados.</p>
+            <span>Construido con HTML, CSS y JavaScript.</span>
+        </div>
+    </footer>
+
+    <!-- Controles de experiencia -->
+    <div class="experience-controls">
+        <button class="effects-toggle" type="button" aria-label="Desactivar efectos visuales" aria-pressed="true">
+            <span class="effects-toggle-icon" aria-hidden="true">✦</span>
+            <span>Effects</span>
+            <strong class="effects-toggle-state">ON</strong>
+        </button>
     </div>
 
+    <!-- Botón volver arriba -->
+    <a href="#inicio" class="back-to-top" aria-label="Volver al inicio">
+        <img src="./iconos/arrow-up.svg" alt="">
+    </a>
 
-</section>
-
-<section id="contacto" class="section">
-    <div class="contenido">
-        <h2>contacto</h2>
-        <p>Si tienes un proyecto en mente o simplemente quieres saludar, mi bandeja de entrada siempre está abierta.</p>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor" aria-hidden="true">
+        <span class="custom-cursor-dot"></span>
+        <span class="custom-cursor-ring"></span>
     </div>
 
-    <div class="area-visual">
-        <form action="mailto:carlos.velasco.est@gmail.com" method="GET" class="contacto-form">               
-            <input type="text" name="Nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="Email" placeholder="Tu Email" required>
-
-            <textarea name="Mensaje" placeholder="Cuéntame sobre tu proyecto..." rows="4" required></textarea>
-
-            <button type="submit" class="btn-enviar">Redactar Correo</button>
-        </form>
-    </div>
-</section>
-
-<footer class="minimal-footer">
-    <div class="social-icons" style="justify-content: center; margin: 20px 0; display: flex; gap: 15px;">
-        <a href="https://github.com/Velasco-c" target="_blank"><img src="iconos/github.svg" alt="GitHub"></a>
-        <a href="https://www.linkedin.com/..." target="_blank"><img src="iconos/linkedin.svg" alt="LinkedIn"></a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carlos.velasco.est@gmail.com" target="_blank" class="link-mail" data-mail="carlos.velasco.est@gmail.com"><img src="iconos/email.svg" alt="Correo"></a>
-    </div>
-
-    <p class="footer-legal">&copy; 2026 | Carlos Tzoy</p>
-</footer>
+    <!-- JavaScript -->
+    <script src="./js/main.js" defer></script>
 </body>
 </html>
