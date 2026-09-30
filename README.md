@@ -1,30 +1,57 @@
-# Portafolio - Carlos Elias Tzoy Velasco
-portafolio personal desarrollado con **HTML y CSS**, donde presento información sobre mí, mis habilidades, proyectos y formas de contacto. El objetivo es mostrar mi crecimiento como desarrollador de software en formación y compartir algunos de los trabajos que he realizado.
+# Carlos Velasco — Portfolio
 
-## ✨ Contenido
-- **Inicio:** Presentación personal y breve descripción de mi perfil.  
-- **Sobre mí:** Mi enfoque en la mejora continua, la resolución de problemas y el uso de lenguajes como Python.  
-- **Habilidades:** Competencias técnicas como HTML, CSS, Git y resolución de problemas.  
-- **Proyectos:** Ejemplos de trabajos realizados, incluyendo retos y proyectos en Python.  
-- **Tecnologías:** Herramientas y lenguajes que utilizo en el desarrollo.  
-- **Contacto:** Formulario y enlaces a mis redes sociales para conectar conmigo.  
+Portfolio personal de Carlos Elias Tzoy Velasco, construido con Vite, JavaScript modular y CSS.
 
-## 🚀 Tecnologías utilizadas
-- HTML  
-- CSS  
-- Git  
-- Python  
+## Stack
 
-## 📬 Contacto
-Si deseas colaborar o tienes un proyecto en mente, puedes escribirme a:  
-**carlos.velasco.est@gmail.com**
+- HTML5
+- CSS3
+- JavaScript ES Modules
+- Vite
+- Lucide
 
-También puedes encontrarme en:  
-- [GitHub](https://github.com/Velasco-c)  
-- [LinkedIn](https://www.linkedin.com/in/carlos-velasco-0b1b80278)  
-- [Instagram](https://www.instagram.com/ve.lasco319)  
-- [Facebook](https://www.facebook.com/share/1GnUN6dnLk/)  
+## Arquitectura
 
----
+```text
+src/
+├── app/
+│   └── app.js
+├── components/
+│   └── render.js
+├── data/
+│   └── portfolio-data.js
+├── interactions/
+│   └── interaction.js
+└── styles/
+    ├── animations.css
+    ├── components.css
+    ├── layout.css
+    ├── main.css
+    ├── reset.css
+    ├── responsive.css
+    ├── sections.css
+    ├── tokens.css
+    └── typography.css
+```
 
-© 2026 | Carlos Tzoy
+El contenido está centralizado en `src/data/portfolio-data.js`. La interfaz se renderiza desde componentes pequeños y las interacciones están separadas de la presentación.
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Publicación
+
+El proyecto está preparado para desplegarse como sitio estático. La URL de portfolio configurada en los metadatos es:
+
+`https://velasco-c.github.io/Portafolio/`
