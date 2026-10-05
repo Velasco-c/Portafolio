@@ -1,57 +1,57 @@
-# Carlos Velasco — Portfolio
+# Portafolio — Carlos Elias Tzoy Velasco
 
-Portfolio personal de Carlos Elias Tzoy Velasco, construido con Vite, JavaScript modular y CSS.
+Portafolio personal hecho con HTML, CSS y JavaScript nativo. No utiliza Vite ni dependencias externas para ejecutarse.
 
-## Stack
+## Requisitos
 
-- HTML5
-- CSS3
-- JavaScript ES Modules
-- Vite
-- Lucide
+- Node.js 18 o superior para los comandos incluidos.
+- Un navegador moderno.
 
-## Arquitectura
+## Ejecutar localmente
 
-```text
-src/
-├── app/
-│   └── app.js
-├── components/
-│   └── render.js
-├── data/
-│   └── portfolio-data.js
-├── interactions/
-│   └── interaction.js
-└── styles/
-    ├── animations.css
-    ├── components.css
-    ├── layout.css
-    ├── main.css
-    ├── reset.css
-    ├── responsive.css
-    ├── sections.css
-    ├── tokens.css
-    └── typography.css
-```
-
-El contenido está centralizado en `src/data/portfolio-data.js`. La interfaz se renderiza desde componentes pequeños y las interacciones están separadas de la presentación.
-
-## Desarrollo
+Clona el repositorio, entra a la carpeta y ejecuta:
 
 ```bash
-npm install
 npm run dev
 ```
 
-## Build
+Abre [http://localhost:5173](http://localhost:5173). El servidor local es necesario para que el navegador cargue los módulos de JavaScript.
+
+Comandos disponibles:
 
 ```bash
-npm run build
-npm run preview
+npm run check    # revisa sintaxis y estructura del contenido
+npm run build    # genera la versión estática en dist/
+npm run preview  # sirve dist/ en http://localhost:5173
 ```
 
-## Publicación
+No hace falta ejecutar `npm install`: el proyecto no tiene dependencias.
 
-El proyecto está preparado para desplegarse como sitio estático. La URL de portfolio configurada en los metadatos es:
+## Publicar en GitHub Pages
 
-`https://velasco-c.github.io/Portafolio/`
+El workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) compila el sitio y publica `dist/` automáticamente cuando haces push a `main`.
+
+1. En GitHub, abre **Settings → Pages** del repositorio.
+2. En **Build and deployment → Source**, selecciona **GitHub Actions**.
+3. Sube los cambios a la rama `main` y revisa el progreso en la pestaña **Actions**.
+
+Al terminar, el sitio estará en `https://velasco-c.github.io/Portafolio/`.
+
+Las rutas de la página y de sus imágenes son relativas, por lo que funcionan tanto en `localhost` como bajo la ruta `/Portafolio/` de GitHub Pages. Si publicas desde una rama distinta, selecciónala en Pages.
+
+## Personalizar el contenido
+
+Edita [`src/content/portfolio.js`](src/content/portfolio.js) para cambiar el nombre, descripción, experiencia, tecnologías, proyectos, enlaces y contacto. Coloca imágenes en `public/` y referencia su ruta, por ejemplo `./public/images/mi-foto.png`.
+
+## Estructura
+
+```text
+index.html              Página principal
+src/content/portfolio.js Contenido del portafolio
+src/sections/            Secciones de la página
+src/animations/          Animaciones e interacciones
+src/effects/              Efectos WebGL y canvas
+src/styles/main.css       Estilos
+public/                   Imágenes, iconos y otros recursos
+scripts/                  Servidor local, compilación y revisión
+```
