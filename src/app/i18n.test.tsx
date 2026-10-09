@@ -5,6 +5,7 @@ import RootPage from "./(default)/page";
 import { Document } from "./document";
 import { getLocaleMetadata } from "../i18n/metadata";
 import { isLocale } from "../i18n/config";
+import { getDictionary } from "../i18n/dictionaries";
 
 describe("locale routes", () => {
   it("renders Spanish and English through the same page with matching language labels", async () => {
@@ -14,7 +15,7 @@ describe("locale routes", () => {
       expect(documentElement.props.lang).toBe(locale);
       const { unmount } = render(page);
       expect(screen.getByRole("navigation", { name: locale === "es" ? "Navegación principal" : "Primary navigation" })).toBeTruthy();
-      expect(screen.getByRole("heading", { level: 1 }).textContent).toContain(locale === "es" ? "Creo sistemas digitales" : "I build digital systems");
+      expect(screen.getByRole("heading", { level: 1 }).textContent).toContain(getDictionary(locale).home.heroTitle);
       const nav = screen.getByRole("navigation", { name: locale === "es" ? "Navegación principal" : "Primary navigation" });
       expect(within(nav).getByRole("link", { name: locale === "es" ? "Proyectos" : "Work" }).getAttribute("href")).toBe("#work");
       expect(document.getElementById("contact")).toBeTruthy();
@@ -22,8 +23,11 @@ describe("locale routes", () => {
     }
   });
 
-  it("redirects the unprefixed page to Spanish", () => {
-    expect(RootPage).toThrowError(/NEXT_REDIRECT/);
+  it("renders Spanish at the unprefixed path for static hosting", async () => {
+    const page = await RootPage();
+    render(page);
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toContain(getDictionary("es").home.heroTitle);
+    expect(screen.getByRole("navigation", { name: "Navegación principal" })).toBeTruthy();
   });
 
   it("rejects unsupported locales", async () => {

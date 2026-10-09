@@ -13,7 +13,8 @@ describe("portfolio home", () => {
     render(createElement(HomePage, { content, locale, messages: getDictionary(locale) }));
 
     expect(screen.getByRole("main")).toBeTruthy();
-    expect(screen.getByRole("heading", { level: 1, name: /I build digital systems/i })).toBeTruthy();
+    const { heroTitle, heroEmphasis } = getDictionary(locale).home;
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toBe(`${heroTitle} ${heroEmphasis}`);
     const nav = screen.getByRole("navigation", { name: "Primary navigation" });
     for (const id of ["work", "about", "capabilities", "contact"]) {
       expect(document.getElementById(id)).toBeTruthy();
