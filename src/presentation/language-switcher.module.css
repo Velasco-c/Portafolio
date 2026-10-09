@@ -1,0 +1,4 @@
+.switcher{display:flex;align-items:center;gap:7px;margin-left:20px;font:500 11px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.switcher a{opacity:.55;text-decoration:none}
+.switcher a[aria-current="page"]{opacity:1}
+.switcher a:hover{opacity:.65}

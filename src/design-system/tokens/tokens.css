@@ -1,0 +1,36 @@
+@import "../themes/dark.css";
+@import "../themes/light.css";
+
+:root {
+  --font-display: var(--font-bricolage, "Arial Narrow"), system-ui, sans-serif;
+  --font-body: var(--font-geist, system-ui), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains, ui-monospace), ui-monospace, monospace;
+  --text-display-xl: clamp(3.25rem, 14vw, 10.5rem);
+  --text-display-l: clamp(2.5rem, 8vw, 6rem);
+  --text-display-m: clamp(1.75rem, 4vw, 3rem);
+  --text-lead: clamp(1.125rem, 1.4vw, 1.375rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-meta: 0.75rem;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px; --space-11: 192px;
+  --section-pad: clamp(var(--space-9), 14vw, var(--space-11));
+  --page-gutter: clamp(16px, 4vw, 64px);
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px;
+  --radius-xl: 36px; --radius-full: 999px;
+  --bp-sm: 480px; --bp-md: 768px; --bp-lg: 1024px; --bp-xl: 1440px;
+  --z-base: 0; --z-content: 1; --z-sticky: 10; --z-nav: 100;
+  --z-overlay: 200; --z-cursor: 900; --z-skip: 1000;
+  --motion-duration-instant: 100ms;
+  --motion-duration-fast: 180ms;
+  --motion-duration-normal: 280ms;
+  --motion-duration-slow: 640ms;
+  --motion-duration-cinematic: 1200ms;
+  --motion-ease-standard: cubic-bezier(0.77, 0, 0.175, 1);
+  --motion-ease-enter: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-ease-exit: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --iris-angle: 0deg;
+  --iris-edge: conic-gradient(from var(--iris-angle), var(--iris-cyan), var(--iris-violet), var(--iris-magenta), var(--iris-amber), var(--iris-mint), var(--iris-cyan));
+}

@@ -29,10 +29,21 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm run test
 
       - name: Build project
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /Portafolio
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -40,7 +51,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./out
 
   deploy:
     environment:

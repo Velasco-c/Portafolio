@@ -1,0 +1,51 @@
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: oklch(0.972 0.005 250);
+  --color-bg-raised: oklch(0.99 0.003 250);
+  --color-text: oklch(0.2 0.02 265);
+  --color-text-muted: oklch(0.42 0.02 265);
+  --color-text-subtle: oklch(0.46 0.015 265);
+  --color-border: oklch(0.2 0.02 265 / 0.16);
+  --color-focus: oklch(0.45 0.18 265);
+  --iris-cyan: oklch(0.8 0.09 200);
+  --iris-violet: oklch(0.7 0.12 295);
+  --iris-magenta: oklch(0.76 0.11 350);
+  --iris-amber: oklch(0.86 0.09 85);
+  --iris-mint: oklch(0.82 0.09 165);
+  --glass-0-bg: oklch(1 0 0 / 0.45);
+  --glass-1-bg: oklch(1 0 0 / 0.55);
+  --glass-2-bg: oklch(1 0 0 / 0.62);
+  --glass-3-bg: oklch(1 0 0 / 0.7);
+  --glass-4-bg: oklch(1 0 0 / 0.78);
+  --shadow-1: 0 1px 2px oklch(0.3 0.03 265 / 0.08);
+  --shadow-2: 0 8px 24px -8px oklch(0.3 0.03 265 / 0.14);
+  --shadow-3: 0 20px 48px -16px oklch(0.3 0.03 265 / 0.18);
+  --shadow-4: 0 40px 90px -24px oklch(0.3 0.03 265 / 0.22);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --color-bg: oklch(0.972 0.005 250);
+    --color-bg-raised: oklch(0.99 0.003 250);
+    --color-text: oklch(0.2 0.02 265);
+    --color-text-muted: oklch(0.42 0.02 265);
+    --color-text-subtle: oklch(0.46 0.015 265);
+    --color-border: oklch(0.2 0.02 265 / 0.16);
+    --color-focus: oklch(0.45 0.18 265);
+    --iris-cyan: oklch(0.8 0.09 200);
+    --iris-violet: oklch(0.7 0.12 295);
+    --iris-magenta: oklch(0.76 0.11 350);
+    --iris-amber: oklch(0.86 0.09 85);
+    --iris-mint: oklch(0.82 0.09 165);
+    --glass-0-bg: oklch(1 0 0 / 0.45);
+    --glass-1-bg: oklch(1 0 0 / 0.55);
+    --glass-2-bg: oklch(1 0 0 / 0.62);
+    --glass-3-bg: oklch(1 0 0 / 0.7);
+    --glass-4-bg: oklch(1 0 0 / 0.78);
+    --shadow-1: 0 1px 2px oklch(0.3 0.03 265 / 0.08);
+    --shadow-2: 0 8px 24px -8px oklch(0.3 0.03 265 / 0.14);
+    --shadow-3: 0 20px 48px -16px oklch(0.3 0.03 265 / 0.18);
+    --shadow-4: 0 40px 90px -24px oklch(0.3 0.03 265 / 0.22);
+  }
+}
