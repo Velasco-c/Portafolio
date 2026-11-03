@@ -1,12 +1,11 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import type { ExperienceEntry } from "../domain/experience/experience-entry";
 import type { LearningTopic } from "../domain/learning/learning-topic";
 import type { ProcessStep } from "../domain/process/process-step";
 import type { Profile } from "../domain/profile/profile";
 import type { Project } from "../domain/projects/project";
-import type { Skill, SkillContext, SkillRelation } from "../domain/skills/skill";
-import type { SectionPlanItem, SiteCopy } from "../domain/site/site";
+import type { Skill } from "../domain/skills/skill";
 import type { Dictionary } from "../i18n/dictionaries";
 import type { Locale } from "../i18n/config";
 import { PageMotion } from "../animations/components/page-motion";
@@ -14,20 +13,17 @@ import { SmoothScroll } from "../animations/components/smooth-scroll";
 import { ThreeBackground } from "../graphics/three/three-background";
 import { LanguageSwitcher } from "./language-switcher";
 import { ThemeSwitch } from "./theme-switch";
+import { CookieNotice, CookiePreferencesButton } from "./cookie-notice";
 import { sitePath } from "../infrastructure/site-path";
 import styles from "./home-page.module.css";
 
-export interface HomeViewModel {
+interface HomeViewModel {
   profile: Profile;
   projects: readonly Project[];
   skills: readonly Skill[];
-  relations: readonly SkillRelation[];
   process: readonly ProcessStep[];
   learning: readonly LearningTopic[];
   experience: readonly ExperienceEntry[];
-  copy: SiteCopy;
-  sections: readonly SectionPlanItem[];
-  skillContexts: Readonly<Record<string, SkillContext>>;
 }
 
 const tech = [
@@ -65,8 +61,7 @@ function Reveal({
 }) {
   return (
     <div
-      className={`${styles.editorialMotion}${className ? ` ${className}` : ""}`}
-      data-motion-reveal
+      className={className || undefined}
       data-motion-editorial
       data-motion-project={project ? "" : undefined}
     >
@@ -83,10 +78,7 @@ function SectionLabel({
   children: ReactNode;
 }) {
   return (
-    <div
-      className={`${styles.sectionLabel} ${styles.editorialMotion}`}
-      data-motion-editorial
-    >
+    <div className={styles.sectionLabel} data-motion-editorial>
       <span>{number}</span>
       <span>{children}</span>
     </div>
@@ -149,7 +141,7 @@ function ProjectArtwork({
               <div className={styles.parkingSpots}>
                 {["A01", "A02", "A03", "B01", "B02", "B03"].map((spot, index) => (
                   <span
-                    className={index === 1 || index === 4 ? styles.spotOccupied : styles.spotAvailable}
+                    className={index === 1 || index === 4 ? styles.spotOccupied : undefined}
                     key={spot}
                   >
                     {spot}
@@ -263,29 +255,26 @@ export function HomePage({
           <span>Velasco-c</span>
         </a>
 
-        <nav
-          className={styles.nav}
-          aria-label={messages.accessibility.navigation}
-        >
-          <a href="#work">{messages.nav.work}</a>
-          <a href="#about">{messages.nav.about}</a>
-          <a href="#capabilities">{messages.nav.capabilities}</a>
-          <a href="#contact">{messages.nav.contact}</a>
-        </nav>
+        <details className={styles.mobileNav}>
+          <summary aria-label={messages.accessibility.navigation} />
+          <nav
+            className={styles.nav}
+            aria-label={messages.accessibility.navigation}
+          >
+            <a href="#work">{messages.nav.work}</a>
+            <a href="#about">{messages.nav.about}</a>
+            <a href="#capabilities">{messages.nav.capabilities}</a>
+            <a href="#contact">{messages.nav.contact}</a>
+          </nav>
+        </details>
 
-        <div className={styles.headerCta}>
-          <a href={`mailto:${profile.email}`}>
-            {messages.nav.talk} <Arrow />
-          </a>
-
-          <div className={styles.headerTools}>
-            <ThemeSwitch labels={messages.display} />
-            <LanguageSwitcher
-              locale={locale}
-              label={messages.accessibility.language}
-              switchLabel={messages.accessibility.switchTo}
-            />
-          </div>
+        <div className={styles.headerTools}>
+          <ThemeSwitch labels={messages.display} />
+          <LanguageSwitcher
+            locale={locale}
+            label={messages.accessibility.language}
+            switchLabel={messages.accessibility.switchTo}
+          />
         </div>
       </header>
 
@@ -301,7 +290,7 @@ export function HomePage({
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
               <Reveal>
-                <p className={styles.eyebrow}>{t.engineer}</p>
+                <p className={styles.eyebrow}>{t.role}</p>
               </Reveal>
 
               <Reveal>
@@ -364,7 +353,7 @@ export function HomePage({
           </div>
         </section>
 
-        <section id="work" className={styles.workSection}>
+        <section id="work">
           <div className={styles.sectionInner}>
             <SectionLabel number="02">{t.selected}</SectionLabel>
 
@@ -503,13 +492,8 @@ export function HomePage({
             </div>
 
             <Reveal className={styles.techCloud}>
-              {tech.map((item, index) => (
-                <span
-                  key={item}
-                  style={{ "--i": index } as CSSProperties}
-                >
-                  {item}
-                </span>
+              {tech.map((item) => (
+                <span key={item}>{item}</span>
               ))}
             </Reveal>
           </div>
@@ -670,10 +654,15 @@ export function HomePage({
           <span>{t.built}</span>
         </div>
 
-        <a href="#top">
-          {messages.accessibility.backToTop} ↑
-        </a>
+        <div>
+          <CookiePreferencesButton label={messages.cookies.preferences} />
+          <a href="#top">
+            {messages.accessibility.backToTop} ↑
+          </a>
+        </div>
       </footer>
+
+      <CookieNotice labels={messages.cookies} />
     </>
   );
 }

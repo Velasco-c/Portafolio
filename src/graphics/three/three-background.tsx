@@ -104,7 +104,8 @@ export function ThreeBackground() {
     }
 
     const target = { x: 0, y: 0, scroll: 0, section: 0 };
-    const current = { x: 0, y: 0, scroll: 0, section: 0 };
+    const current = { x: 0, y: 0, scroll: 0, section: 0, opacity: MODES.top.opacity };
+    const targetColor = new THREE.Color();
     let activeSection = 0;
     let raf = 0;
     let running = true;
@@ -148,6 +149,7 @@ export function ThreeBackground() {
       current.section = damp(current.section, target.section, 4, dt);
 
       const mode = MODES[SECTION_IDS[Math.round(current.section)] ?? "top"];
+      current.opacity = damp(current.opacity, mode.opacity, 3.5, dt);
       const motion = reduced.matches ? 0 : 1;
       root.rotation.y = time * 0.08 + current.x * 0.25 + current.scroll * 1.8;
       root.rotation.x = current.y * 0.15 + current.scroll * 0.35;
@@ -163,11 +165,11 @@ export function ThreeBackground() {
       camera.position.y = damp(camera.position.y, -current.y * 0.2 * motion, 3, dt);
       camera.lookAt(0, 0, 0);
 
-      const color = new THREE.Color(mode.color);
-      particleMaterial.uniforms.uColor.value.lerp(color, 0.06);
-      particleMaterial.uniforms.uOpacity.value = mode.opacity;
-      globe.material.opacity = mode.opacity * 0.12;
-      canvas.style.opacity = String(mode.opacity);
+      targetColor.set(mode.color);
+      particleMaterial.uniforms.uColor.value.lerp(targetColor, 1 - Math.exp(-4 * dt));
+      particleMaterial.uniforms.uOpacity.value = current.opacity;
+      globe.material.opacity = current.opacity * 0.12;
+      canvas.style.opacity = String(current.opacity);
       renderer.render(scene, camera);
       raf = requestAnimationFrame(render);
     };

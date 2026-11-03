@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { clearTokenCache } from "../tokens/token-reader";
+import { canStorePreferences } from "../../infrastructure/consent/consent";
 
 export type Theme = "dark" | "light";
 
@@ -16,7 +16,7 @@ function isTheme(value: string | undefined): value is Theme {
 
 function getStoredTheme(): Theme | null {
   if (explicitTheme) return explicitTheme;
-  if (typeof window === "undefined") return null;
+  if (typeof window === "undefined" || !canStorePreferences()) return null;
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY) ?? undefined;
     return isTheme(stored) ? stored : null;
@@ -34,7 +34,6 @@ function getSystemTheme(): Theme {
 }
 
 function notify(): void {
-  clearTokenCache();
   for (const listener of listeners) listener();
 }
 
@@ -67,7 +66,7 @@ export function getTheme(): Theme {
 }
 
 /** Stable snapshot for server rendering and useSyncExternalStore hydration. */
-export function getServerTheme(): Theme {
+function getServerTheme(): Theme {
   return "dark";
 }
 
@@ -76,14 +75,25 @@ export function setTheme(theme: Theme): void {
   if (typeof document !== "undefined") {
     document.documentElement.dataset.theme = theme;
   }
-  try {
-    window.localStorage.setItem(STORAGE_KEY, theme);
-    explicitTheme = undefined;
-  } catch {
-    // The in-memory choice still applies for this session when storage is blocked.
-    explicitTheme = theme;
+  if (canStorePreferences()) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+      explicitTheme = undefined;
+    } catch {
+      // The in-memory choice still applies for this session when storage is blocked.
+      explicitTheme = theme;
+    }
   }
   notify();
+}
+
+/** Removes the saved theme, used when the visitor declines stored preferences. */
+export function forgetStoredTheme(): void {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Nothing to remove when storage is unavailable.
+  }
 }
 
 export function subscribe(listener: () => void): () => void {

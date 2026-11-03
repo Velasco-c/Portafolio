@@ -1,0 +1,121 @@
+.notice {
+  position: fixed;
+  z-index: var(--z-overlay);
+  left: clamp(14px, 2vw, 28px);
+  right: clamp(14px, 2vw, 28px);
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 680px;
+  margin-inline: auto;
+  padding: 14px 14px 14px 22px;
+  border: 1px solid var(--ed-glass-edge);
+  border-radius: var(--radius-xl);
+  background: var(--ed-glass-bar);
+  box-shadow: var(--ed-glass-shine), var(--ed-glass-shadow);
+  -webkit-backdrop-filter: blur(var(--ed-glass-blur)) saturate(1.6);
+  backdrop-filter: blur(var(--ed-glass-blur)) saturate(1.6);
+  color: var(--ed-text);
+  font: 400 13px/1.5 Arial, Helvetica, sans-serif;
+  animation: notice-in var(--motion-duration-slow) var(--motion-ease-enter) both;
+}
+
+.notice[data-state="closing"] {
+  animation: notice-out var(--motion-duration-normal) var(--motion-ease-exit) both;
+}
+
+.notice p {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--ed-text-2);
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.accept,
+.decline {
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: var(--radius-full);
+  font: 600 11px/1 Arial, Helvetica, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.accept {
+  background: var(--ed-accent);
+  color: var(--ed-on-accent);
+}
+
+.decline {
+  background: transparent;
+  color: var(--ed-text-3);
+}
+
+.decline:hover {
+  color: var(--ed-text);
+}
+
+@keyframes notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes notice-out {
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+@media (max-width: 600px) {
+  .notice {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice,
+  .notice[data-state="closing"] {
+    animation: none;
+  }
+}
+
+/* Footer control: reads as a footer link, not as a button. */
+.preferences {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.preferences:hover {
+  opacity: 0.55;
+}

@@ -13,6 +13,7 @@ afterEach(() => {
 describe("ThemeSwitch", () => {
   it("offers Claro and Oscuro as a pressed-state group and saves the chosen theme", async () => {
     const user = userEvent.setup();
+    window.localStorage.setItem("portfolio-consent", "accepted");
     document.documentElement.dataset.theme = "dark";
     render(<ThemeSwitch labels={labels} />);
 

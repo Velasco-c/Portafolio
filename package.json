@@ -9,14 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "e2e": "playwright test",
-    "e2e:chromium": "playwright test --project=chromium --project=chromium-mobile",
-    "e2e:firefox": "playwright test --project=firefox",
-    "e2e:webkit": "playwright test --project=webkit",
-    "e2e:headed": "playwright test --headed",
-    "e2e:debug": "playwright test --debug",
-    "e2e:report": "playwright show-report"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "gsap": "^3.15.0",
@@ -27,8 +20,6 @@
     "three": "^0.180.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
-    "@playwright/test": "^1.63.0",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
     "@types/node": "^26.6.4",

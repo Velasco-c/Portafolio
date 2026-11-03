@@ -2,19 +2,26 @@ import type { Locale } from "./config";
 
 const en = {
   metadata: {
-    title: "Carlos Velasco — Software Engineer",
-    description: "Carlos Velasco — software engineering, creative development, systems and WebGL portfolio.",
+    title: "Carlos Velasco — Software Development Technician",
+    description: "Carlos Velasco — software development, creative development, systems and WebGL portfolio.",
   },
   accessibility: {
     skip: "Skip to content", home: "Carlos Velasco home", navigation: "Primary navigation",
     openProject: "open repository", backToTop: "Back to top", language: "Language",
-    switchTo: "Switch language to Spanish", portrait: "Portrait placeholder for Carlos Elias Tzoy Velasco",
+    switchTo: "Switch language to Spanish",
   },
-  nav: { work: "Work", about: "About", capabilities: "Capabilities", contact: "Contact", talk: "Let's talk" },
+  nav: { work: "Work", about: "About", capabilities: "Capabilities", contact: "Contact" },
   display: { mode: "Display mode", light: "Light", dark: "Dark" },
+  cookies: {
+    label: "Cookie notice",
+    text: "This site uses your browser's local storage, a technology similar to cookies, to remember whether you prefer the light or dark theme. It doesn't use tracking or analytics cookies.",
+    accept: "Accept",
+    decline: "Decline",
+    preferences: "Cookie preferences",
+  },
   home: {
-    portfolio: "Portfolio", engineer: "Software development engineer · creative developer",
-    heroTitle: "Software Development", heroEmphasis: "Engineer.",
+    portfolio: "Portfolio", role: "Software development technician · creative developer",
+    heroTitle: "Software Development", heroEmphasis: "Technician.",
     heroLead: "From thoughtful interfaces to production-ready APIs and interactive experiences, I turn ideas into software designed from the first interaction to the last detail.",
     selectedWork: "Explore selected work", readAbout: "Read about me", scroll: "Scroll to explore",
     manifesto: "Manifesto", belief: "What I believe about building software",
@@ -28,7 +35,7 @@ const en = {
     stackIntro: "My stack is intentionally broad: I can move from interface composition to backend boundaries, from animation timelines to data persistence.",
     coreSkills: "Core skills", process: "Process", processTitle: "From", processEmphasis: "question", processEnd: "to system.",
     processIntro: "I keep the process simple: understand the problem, define the system, make the interaction feel right, then ship and refine.",
-    about: "About me", aboutTitle: "Engineer by training.", aboutEmphasis: "Curious by default.",
+    about: "About me", aboutTitle: "Technician by training.", aboutEmphasis: "Curious by default.",
     aboutOne: "I'm {name}, a {title} based in {city}. I enjoy the intersection where engineering discipline meets visual thinking.",
     aboutTwo: "I care about clean boundaries, accessible interfaces, thoughtful motion and software that remains understandable after the excitement of the first release has passed.",
     based: "Based in", focus: "Focus", learning: "Currently learning", experience: "Experience", now: "now",
@@ -50,10 +57,6 @@ const en = {
     "Document decisions, setup and usage so the work can be maintained over time.",
     "Review and refine performance, UX, architecture and code quality iteratively.",
   ],
-  categories: { web: "WEB", backend: "BACKEND", database: "DATABASE", "dev-workflow": "DEV WORKFLOW", automation: "AUTOMATION", ai: "AI" },
-  skillExplorer: { technologies: "Technologies", related: "Related technologies", projects: "Associated projects", noRelations: "No confirmed relationships.", noProjects: "No associated projects." },
-  project: { stack: "STACK", technologies: "Technologies for", repository: "View repository" },
-  aboutFacts: { title: "Title", location: "Location", availability: "Availability" },
   processLabels: ["ANALYZE", "PLAN", "BUILD", "TEST", "DOCUMENT", "IMPROVE"],
   profile: { title: "Software Development Technician", availability: "Available for professional internships and junior opportunities", city: "Guatemala City", photoAlt: "Portrait placeholder for Carlos Elias Tzoy Velasco" },
   projects: [
@@ -62,7 +65,6 @@ const en = {
     { summary: "Automated system for academic records, inquiries, and enrollment through a Telegram bot", repository: "TutorBot Académico repository" },
   ],
   learningTopics: ["Relational database design", "Automation with n8n", "Artificial intelligence"],
-  copy: { nav: ["WORK", "ABOUT", "SKILLS", "CONTACT"], sections: { hero: "Introduction", work: "Work", about: "About", process: "How I work", skills: "Skills", learning: "Currently exploring", experience: "Experience", contact: "Contact" }, learningLabel: "CURRENTLY EXPLORING", contactHeadline: "LET'S / BUILD / SOMETHING.", contactCta: "GET IN TOUCH", footerName: "CARLOS ELIAS TZOY VELASCO", footerLegal: "© 2026 Carlos Elias Tzoy Velasco" },
 } as const;
 
 const es = {
@@ -74,13 +76,20 @@ const es = {
   accessibility: {
     skip: "Saltar al contenido", home: "Inicio de Carlos Velasco", navigation: "Navegación principal",
     openProject: "abrir repositorio", backToTop: "Volver al inicio", language: "Idioma",
-    switchTo: "Cambiar idioma a inglés", portrait: "Imagen provisional del retrato de Carlos Elias Tzoy Velasco",
+    switchTo: "Cambiar idioma a inglés",
   },
-  nav: { work: "Proyectos", about: "Sobre mí", capabilities: "Habilidades", contact: "Contacto", talk: "Hablemos" },
+  nav: { work: "Proyectos", about: "Sobre mí", capabilities: "Habilidades", contact: "Contacto" },
   display: { mode: "Modo de visualización", light: "Claro", dark: "Oscuro" },
+  cookies: {
+    label: "Aviso de cookies",
+    text: "Este sitio usa el almacenamiento local de tu navegador, una tecnología parecida a las cookies, para recordar si prefieres el tema claro u oscuro. No usa cookies de seguimiento ni de analítica.",
+    accept: "Aceptar",
+    decline: "Rechazar",
+    preferences: "Preferencias de cookies",
+  },
   home: {
-    portfolio: "Portafolio", engineer: "Ingeniero en Desarrollo de Software · desarrollador creativo",
-    heroTitle: "Ingeniero en Desarrollo", heroEmphasis: "de Software.",
+    portfolio: "Portafolio", role: "Técnico en Desarrollo de Software · desarrollador creativo",
+    heroTitle: "Técnico en Desarrollo", heroEmphasis: "de Software.",
     heroLead: "Desde interfaces cuidadas hasta APIs listas para producción y experiencias interactivas, convierto ideas en software pensado desde la primera interacción hasta el último detalle.",
     selectedWork: "Explorar proyectos", readAbout: "Conóceme", scroll: "Desplázate para explorar",
     manifesto: "Manifiesto", belief: "Lo que creo sobre crear software",
@@ -94,7 +103,7 @@ const es = {
     stackIntro: "Mi stack es amplio a propósito: puedo pasar de componer interfaces a definir límites de backend, de animaciones a persistencia de datos.",
     coreSkills: "Habilidades principales", process: "Proceso", processTitle: "De la", processEmphasis: "pregunta", processEnd: "al sistema.",
     processIntro: "Mantengo un proceso sencillo: entender el problema, definir el sistema, cuidar la interacción y luego publicar y mejorar.",
-    about: "Sobre mí", aboutTitle: "Ingeniero de formación.", aboutEmphasis: "Curioso por naturaleza.",
+    about: "Sobre mí", aboutTitle: "Técnico de formación.", aboutEmphasis: "Curioso por naturaleza.",
     aboutOne: "Soy {name}, con formación como {title} en {city}. Disfruto el punto donde la disciplina de ingeniería se encuentra con el pensamiento visual.",
     aboutTwo: "Me importan los límites claros, las interfaces accesibles, el movimiento intencional y el software que sigue siendo comprensible después de la emoción del primer lanzamiento.",
     based: "Ubicación", focus: "Enfoque", learning: "Aprendiendo", experience: "Experiencia", now: "actualidad",
@@ -116,10 +125,6 @@ const es = {
     "Documentar decisiones, configuración y uso para facilitar el mantenimiento.",
     "Revisar y mejorar de forma iterativa el rendimiento, la experiencia, la arquitectura y el código.",
   ],
-  categories: { web: "WEB", backend: "BACKEND", database: "BASES DE DATOS", "dev-workflow": "FLUJO DE DESARROLLO", automation: "AUTOMATIZACIÓN", ai: "IA" },
-  skillExplorer: { technologies: "Tecnologías", related: "Tecnologías relacionadas", projects: "Proyectos asociados", noRelations: "No hay relaciones confirmadas.", noProjects: "No hay proyectos asociados." },
-  project: { stack: "TECNOLOGÍAS", technologies: "Tecnologías de", repository: "Ver repositorio" },
-  aboutFacts: { title: "Título", location: "Ubicación", availability: "Disponibilidad" },
   processLabels: ["ANALIZAR", "PLANIFICAR", "CONSTRUIR", "PROBAR", "DOCUMENTAR", "MEJORAR"],
   profile: { title: "Técnico en Desarrollo de Software", availability: "Disponible para prácticas profesionales y oportunidades junior", city: "Ciudad de Guatemala", photoAlt: "Imagen provisional del retrato de Carlos Elias Tzoy Velasco" },
   projects: [
@@ -128,7 +133,6 @@ const es = {
     { summary: "Sistema automatizado para registros, consultas y matrículas académicas mediante un bot de Telegram", repository: "Repositorio de TutorBot Académico" },
   ],
   learningTopics: ["Diseño de bases de datos relacionales", "Automatización con n8n", "Inteligencia artificial"],
-  copy: { nav: ["PROYECTOS", "SOBRE MÍ", "HABILIDADES", "CONTACTO"], sections: { hero: "Presentación", work: "Proyectos", about: "Sobre mí", process: "Cómo trabajo", skills: "Habilidades", learning: "Explorando", experience: "Experiencia", contact: "Contacto" }, learningLabel: "EXPLORANDO ACTUALMENTE", contactHeadline: "VAMOS A / CREAR / ALGO.", contactCta: "HABLEMOS", footerName: "CARLOS ELIAS TZOY VELASCO", footerLegal: "© 2026 Carlos Elias Tzoy Velasco" },
 };
 
 type Widen<T> = T extends string ? string : T extends readonly (infer U)[] ? readonly Widen<U>[] : T extends object ? { [K in keyof T]: Widen<T[K]> } : T;

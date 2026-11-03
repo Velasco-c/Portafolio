@@ -4,7 +4,7 @@ import { transitionTheme } from "../animations/theme-transition/transition-theme
 import { setTheme, useTheme, type Theme } from "../design-system/theme/theme-store";
 import styles from "./theme-switch.module.css";
 
-export interface ThemeSwitchLabels {
+interface ThemeSwitchLabels {
   mode: string;
   light: string;
   dark: string;

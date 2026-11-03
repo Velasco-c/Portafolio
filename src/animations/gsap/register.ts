@@ -1,6 +1,6 @@
 import type { gsap as GsapInstance } from "gsap";
 
-export type RegisteredGsap = typeof GsapInstance;
+type RegisteredGsap = typeof GsapInstance;
 
 let registration: Promise<RegisteredGsap> | undefined;
 

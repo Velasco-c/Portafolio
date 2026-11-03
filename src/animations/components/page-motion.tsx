@@ -4,18 +4,34 @@ import { useEffect } from "react";
 import { registerGsap } from "../gsap/register";
 import { MOTION_OK } from "../media/conditions";
 
+/** Attribute set by the theme init script. Removing it releases the held editorial content. */
+const HOLD_ATTRIBUTE = "data-motion";
+/** Safety net: content is never held longer than this, even if GSAP fails to load. */
+const HOLD_FAILSAFE_MS = 3000;
+
+function releaseContent(): void {
+  document.documentElement.removeAttribute(HOLD_ATTRIBUTE);
+}
+
 /** Adds one-time, visual-only entrances while keeping server-rendered content visible. */
 export function PageMotion() {
   useEffect(() => {
-    if (typeof window.matchMedia !== "function") return;
+    if (typeof window.matchMedia !== "function") {
+      releaseContent();
+      return;
+    }
 
     let disposed = false;
     let generation = 0;
     let revert: (() => void) | undefined;
     const motionPreference = window.matchMedia(MOTION_OK);
+    const failsafe = window.setTimeout(releaseContent, HOLD_FAILSAFE_MS);
 
     const init = () => {
-      if (disposed || !motionPreference.matches) return;
+      if (disposed || !motionPreference.matches) {
+        releaseContent();
+        return;
+      }
       const currentGeneration = ++generation;
 
       void Promise.all([registerGsap(), import("gsap/SplitText")])
@@ -26,7 +42,10 @@ export function PageMotion() {
           gsap.registerPlugin(SplitText);
 
           const root = document.querySelector<HTMLElement>("#main");
-          if (!root) return;
+          if (!root) {
+            releaseContent();
+            return;
+          }
 
           const media = gsap.matchMedia();
           media.add(MOTION_OK, () => {
@@ -46,9 +65,10 @@ export function PageMotion() {
                   chars.push(...split.chars);
                 });
 
+                // Alternating direction keeps neighbouring cards from moving in lockstep.
                 const direction = index % 2 === 0 ? -1 : 1;
                 const timeline = gsap.timeline({
-                  defaults: { overwrite: "auto" },
+                  defaults: { overwrite: "auto", force3D: true },
                   scrollTrigger: {
                     trigger: element,
                     start: "top 88%",
@@ -62,48 +82,39 @@ export function PageMotion() {
                   isProject
                     ? {
                         autoAlpha: 0,
-                        x: direction * 34,
-                        y: 32,
-                        rotationY: direction * 2.5,
-                        scale: 0.975,
-                        transformPerspective: 1000,
+                        x: direction * 24,
+                        y: 40,
+                        rotationY: direction * 1.5,
+                        scale: 0.98,
+                        transformPerspective: 1200,
                         transformOrigin: "50% 80%",
                       }
-                    : { autoAlpha: 0, y: 20 },
+                    : { autoAlpha: 0, y: 24 },
                   {
                     autoAlpha: 1,
                     x: 0,
                     y: 0,
                     rotationY: 0,
                     scale: 1,
-                    duration: isProject ? 0.78 : 0.64,
-                    delay: isProject ? (index % 2) * 0.06 : 0,
+                    duration: isProject ? 1.15 : 0.95,
+                    delay: isProject ? (index % 2) * 0.08 : 0,
                     ease: "power3.out",
                   },
                 );
 
                 if (chars.length > 0) {
+                  // A steady, top-to-bottom rise reads smoother than randomised rotation.
                   timeline.fromTo(
                     chars,
-                    {
-                      autoAlpha: 0,
-                      x: () => gsap.utils.random(-12, 12),
-                      y: () => gsap.utils.random(-16, 16),
-                      rotationX: () => gsap.utils.random(-18, 18),
-                      scale: 0.94,
-                      transformOrigin: "50% 65%",
-                    },
+                    { autoAlpha: 0, yPercent: 55 },
                     {
                       autoAlpha: 1,
-                      x: 0,
-                      y: 0,
-                      rotationX: 0,
-                      scale: 1,
-                      duration: 0.68,
-                      stagger: { each: 0.009, from: "random" },
+                      yPercent: 0,
+                      duration: 0.9,
+                      stagger: { each: 0.012, from: "start" },
                       ease: "power3.out",
                     },
-                    0.04,
+                    0.06,
                   );
                 }
               });
@@ -115,10 +126,13 @@ export function PageMotion() {
             };
           });
 
+          // Start states are applied synchronously above, so releasing now causes no flash.
+          releaseContent();
           revert = () => media.revert();
         })
         .catch(() => {
           // Motion is progressive enhancement; server-rendered content stays visible.
+          releaseContent();
         });
     };
 
@@ -135,8 +149,10 @@ export function PageMotion() {
     return () => {
       disposed = true;
       generation += 1;
+      window.clearTimeout(failsafe);
       motionPreference.removeEventListener("change", handlePreferenceChange);
       revert?.();
+      releaseContent();
     };
   }, []);
 
