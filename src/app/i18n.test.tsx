@@ -39,7 +39,7 @@ describe("locale routes", () => {
     const spanish = getLocaleMetadata("es");
     const english = getLocaleMetadata("en");
     expect(spanish.title).toContain("Desarrollador de Software");
-    expect(english.title).toContain("Software Engineer");
+    expect(english.title).toContain("Software Development Technician");
     expect(spanish.description).not.toBe(english.description);
     expect(spanish.alternates).toEqual({ canonical: "/es", languages: { es: "/es", en: "/en" } });
   });

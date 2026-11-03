@@ -1,11 +1,10 @@
 import type { ContentRepository } from "../../application/ports/content-repository";
-import { copy } from "../../data/copy";
 import { experience } from "../../data/experience";
 import { learning } from "../../data/learning";
 import { process } from "../../data/process";
 import { profile } from "../../data/profile";
 import { projects } from "../../data/projects";
-import { skills, skillRelations } from "../../data/skills";
+import { skills } from "../../data/skills";
 import type { Locale } from "../../i18n/config";
 import { getDictionary } from "../../i18n/dictionaries";
 
@@ -28,7 +27,6 @@ export class StaticContentRepository implements ContentRepository {
       ? { ...skill, label: this.locale === "es" ? "Inteligencia Artificial" : "Artificial Intelligence" }
       : skill);
   }
-  async getSkillRelations() { return skillRelations; }
   async getProcess() {
     return process.map((step, index) => ({ ...step,
       label: this.locale === "es" ? this.translations.processLabels[index] : step.label,
@@ -41,8 +39,4 @@ export class StaticContentRepository implements ContentRepository {
     }));
   }
   async getExperience() { return experience; }
-  async getCopy() {
-    const translated = this.translations.copy;
-    return { ...copy, ...translated, sections: { ...copy.sections, ...translated.sections } };
-  }
 }

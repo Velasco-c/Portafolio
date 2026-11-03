@@ -2,7 +2,6 @@ import type { Profile } from "../domain/profile/profile";
 import { sitePath } from "../infrastructure/site-path";
 
 export const profile = {
-  nameLines: ["CARLOS", "ELIAS", "TZOY", "VELASCO"],
   fullName: "Carlos Elias Tzoy Velasco",
   title: "Técnico en Desarrollo de Software",
   location: { city: "Ciudad de Guatemala", country: "Guatemala" },

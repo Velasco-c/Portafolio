@@ -1,6 +1,5 @@
 @import "../design-system/tokens/tokens.css";
 @import "../design-system/typography/typography.css";
-@import "../design-system/glass/glass.css";
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--space-7); }
@@ -31,12 +30,10 @@ button, [role="button"], a { -webkit-tap-highlight-color: transparent; }
     --motion-duration-fast: 100ms;
     --motion-duration-normal: 150ms;
     --motion-duration-slow: 150ms;
-    --motion-duration-cinematic: 200ms;
   }
 }
 @media (forced-colors: active) {
   :where(button, a, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible { outline: 2px solid Highlight; }
-  .glass { border: 1px solid CanvasText; background: Canvas; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
 @media (prefers-reduced-transparency: reduce) {
@@ -53,3 +50,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 ::selection { background: var(--ed-text); color: var(--ed-paper); }
+
+/* Lenis drives smooth scrolling itself; native smooth scrolling would compete with it. */
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+html.lenis, html.lenis body { height: auto; }
+
+/* Editorial content stays hidden until GSAP sets its start state, so it never flashes before its entrance. */
+html[data-motion="pending"] [data-motion-editorial] { opacity: 0; }
+
+/* Theme changes cross-fade with a longer, softer curve than the browser default. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 560ms;
+  animation-timing-function: var(--motion-ease-enter);
+}

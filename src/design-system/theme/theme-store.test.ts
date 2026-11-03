@@ -9,7 +9,8 @@ afterEach(() => {
 });
 
 describe("theme store", () => {
-  it("persists explicit choices, updates the document and notifies subscribers", () => {
+  it("persists explicit choices once accepted, updates the document and notifies subscribers", () => {
+    window.localStorage.setItem("portfolio-consent", "accepted");
     const listener = vi.fn();
     const unsubscribe = subscribe(listener);
 

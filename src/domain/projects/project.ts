@@ -1,8 +1,7 @@
-import type { ExternalLink, ImageAsset } from "../common/models";
+import type { ExternalLink } from "../common/models";
 
-export interface StackItem {
+interface StackItem {
   label: string;
-  skillId?: string;
 }
 
 export interface Project {
@@ -11,5 +10,4 @@ export interface Project {
   summary: string;
   stack: readonly StackItem[];
   repository: ExternalLink;
-  cover?: ImageAsset;
 }

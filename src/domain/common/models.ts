@@ -6,9 +6,6 @@ export interface ExternalLink {
 export interface ImageAsset {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
-  focalPoint?: { x: number; y: number };
 }
 
 export interface Period {
