@@ -34,11 +34,12 @@ export function PageMotion() {
       }
       const currentGeneration = ++generation;
 
-      void Promise.all([registerGsap(), import("gsap/SplitText")])
-        .then(([gsap, splitTextModule]) => {
+      void Promise.all([registerGsap(), import("gsap/SplitText"), import("gsap/ScrollTrigger")])
+        .then(([gsap, splitTextModule, scrollTriggerModule]) => {
           if (disposed || !motionPreference.matches || currentGeneration !== generation) return;
 
           const SplitText = splitTextModule.SplitText;
+          const ScrollTrigger = scrollTriggerModule.ScrollTrigger;
           gsap.registerPlugin(SplitText);
 
           const root = document.querySelector<HTMLElement>("#main");
@@ -56,8 +57,10 @@ export function PageMotion() {
                 const chars: Element[] = [];
 
                 element.querySelectorAll<HTMLElement>("h1, h2, h3").forEach((heading) => {
+                  // Words are kept whole: splitting only into characters lets the browser break mid-word.
                   const split = new SplitText(heading, {
-                    type: "chars",
+                    type: "words,chars",
+                    wordsClass: "editorialParticleWord",
                     charsClass: "editorialParticleChar",
                     aria: "auto",
                   });
@@ -129,6 +132,12 @@ export function PageMotion() {
           // Start states are applied synchronously above, so releasing now causes no flash.
           releaseContent();
           revert = () => media.revert();
+
+          // Trigger positions are measured before web fonts swap in; re-measure once they settle,
+          // so entrances start at the right point instead of jumping during the first scroll.
+          void document.fonts.ready.then(() => {
+            if (!disposed) ScrollTrigger.refresh();
+          });
         })
         .catch(() => {
           // Motion is progressive enhancement; server-rendered content stays visible.

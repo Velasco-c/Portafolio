@@ -34,6 +34,12 @@
   color: var(--ed-paper);
 }
 
+@media (max-width: 600px) {
+  .option {
+    padding: 0 7px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .option {
     transition: none;

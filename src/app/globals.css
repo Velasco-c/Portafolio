@@ -3,7 +3,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--space-7); }
+/* Lenis-recommended: while it runs, it owns scrolling, so native smooth scrolling must not stack on top. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
 body { min-height: 100vh; }
+/* Entrance animations start a few pixels off-axis; clip them so they never create sideways scrolling. */
+main { overflow-x: clip; }
+/* Split headings: each word stays on one line; only the spaces between words can wrap. */
+.editorialParticleWord { display: inline-block; white-space: nowrap; }
 html, body { transition: color var(--motion-duration-normal) ease, background-color var(--motion-duration-normal) ease; }
 img, svg, video, canvas { display: block; max-width: 100%; }
 button, input, textarea, select { font: inherit; }

@@ -13,6 +13,9 @@ export function registerGsap(): Promise<RegisteredGsap> {
         const ScrollTrigger = scrollTriggerModule.ScrollTrigger;
 
         gsap.registerPlugin(ScrollTrigger);
+        // Mobile browsers resize the viewport height while the address bar moves; ignoring that
+        // avoids re-measuring every trigger mid-scroll, which is what makes scrolling stutter.
+        ScrollTrigger.config({ ignoreMobileResize: true });
 
         return gsap;
       })

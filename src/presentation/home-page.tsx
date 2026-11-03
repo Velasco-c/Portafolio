@@ -14,6 +14,7 @@ import { ThreeBackground } from "../graphics/three/three-background";
 import { LanguageSwitcher } from "./language-switcher";
 import { ThemeSwitch } from "./theme-switch";
 import { CookieNotice, CookiePreferencesButton } from "./cookie-notice";
+import { HeaderNav } from "./header-nav";
 import { sitePath } from "../infrastructure/site-path";
 import styles from "./home-page.module.css";
 
@@ -255,18 +256,12 @@ export function HomePage({
           <span>Velasco-c</span>
         </a>
 
-        <details className={styles.mobileNav}>
-          <summary aria-label={messages.accessibility.navigation} />
-          <nav
-            className={styles.nav}
-            aria-label={messages.accessibility.navigation}
-          >
-            <a href="#work">{messages.nav.work}</a>
-            <a href="#about">{messages.nav.about}</a>
-            <a href="#capabilities">{messages.nav.capabilities}</a>
-            <a href="#contact">{messages.nav.contact}</a>
-          </nav>
-        </details>
+        <HeaderNav label={messages.accessibility.navigation}>
+          <a href="#work">{messages.nav.work}</a>
+          <a href="#about">{messages.nav.about}</a>
+          <a href="#capabilities">{messages.nav.capabilities}</a>
+          <a href="#contact">{messages.nav.contact}</a>
+        </HeaderNav>
 
         <div className={styles.headerTools}>
           <ThemeSwitch labels={messages.display} />
