@@ -1,0 +1,1 @@
+export const themeInitScript = `(()=>{let saved=null;try{saved=localStorage.getItem("portfolio-theme")}catch{}const systemPrefersLight=typeof matchMedia==="function"&&matchMedia("(prefers-color-scheme: light)").matches;const theme=saved==="dark"||saved==="light"?saved:systemPrefersLight?"light":"dark";document.documentElement.dataset.theme=theme})()`;
