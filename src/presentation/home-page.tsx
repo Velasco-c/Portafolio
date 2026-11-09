@@ -595,7 +595,10 @@ export function HomePage({
 
         <section className={styles.nowSection}>
           <div className={styles.marquee} aria-hidden="true">
-            <span>{t.marquee}</span>
+            <div className={styles.marqueeTrack}>
+              <span>{t.marquee} {t.marquee}</span>
+              <span>{t.marquee} {t.marquee}</span>
+            </div>
           </div>
         </section>
 
